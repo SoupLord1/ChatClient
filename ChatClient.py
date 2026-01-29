@@ -354,6 +354,8 @@ class ChatScreen(Screen):
         self.scrollFrame.canvas.yview_moveto('1.0')
 
     def messageButtonClicked(self):
+        if (self.messageEntry.get().strip(" ") == ""):
+            return
         requester.send_chat(self.messageEntry.get())
         processMessage(self.username, self.messageEntry.get())
         self.messageEntry.delete(0, END)
